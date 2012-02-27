@@ -1,0 +1,601 @@
+# Basque translation of psmisc.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the psmisc package.
+# Mikel Olasagasti <hey_neken@mundurat.net>, 2004, 2005.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: psmisc 21.6pre1\n"
+"Report-Msgid-Bugs-To: csmall@small.dropbear.id.au\n"
+"POT-Creation-Date: 2007-11-04 17:27+1100\n"
+"PO-Revision-Date: 2005-02-23 14:55+0100\n"
+"Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
+"Language-Team: Basque <translation-team-eu@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/killall.c:74
+#, c-format
+msgid "Kill %s(%s%d) ? (y/N) "
+msgstr "%s(%s%d) hil? (y/N) "
+
+#: src/killall.c:77
+#, fuzzy, c-format
+msgid "Signal %s(%s%d) ? (y/N) "
+msgstr "%s(%s%d) hil? (y/N) "
+
+#: src/killall.c:121
+#, c-format
+msgid "Cannot get UID from process status\n"
+msgstr ""
+
+#: src/killall.c:147 src/killall.c:682
+#, c-format
+msgid "Bad regular expression: %s\n"
+msgstr ""
+
+#: src/killall.c:343
+#, c-format
+msgid "skipping partial match %s(%d)\n"
+msgstr "baterakuntza partziala saltatzen %s(%d)\n"
+
+#: src/killall.c:445
+#, c-format
+msgid "Killed %s(%s%d) with signal %d\n"
+msgstr "%s(%s%d) hil da %d seinalearekin\n"
+
+#: src/killall.c:459
+#, c-format
+msgid "%s: no process killed\n"
+msgstr "%s: ez da prozesurik hil\n"
+
+#: src/killall.c:497
+#, fuzzy, c-format
+msgid ""
+"Usage: pidof [ -eg ] NAME...\n"
+"       pidof -V\n"
+"\n"
+"    -e      require exact match for very long names;\n"
+"            skip if the command line is unavailable\n"
+"    -g      show process group ID instead of process ID\n"
+"    -V      display version information\n"
+"\n"
+msgstr ""
+"erabilera: pidof [ -eg ] izena ...\n"
+"       pidof -V\n"
+"\n"
+"    -e      izen oso luzeak berdin idaztera behartu;\n"
+"            jauzi komandoa eskuragarri ez badago\n"
+"    -g      erakutsi prozesu taldearen IDa prozesuenaren ordez\n"
+"    -V      bertsioaren informazioa bistaratu\n"
+"\n"
+
+#: src/killall.c:511
+#, fuzzy, c-format
+msgid ""
+"Usage: killall [-Z CONTEXT] [-u USER] [ -eIgiqrvw ] [ -SIGNAL ] NAME...\n"
+msgstr ""
+"erabilera: killall [-s sid] [-c context] [ .egiqvw ] [ -signal ] izena ...\n"
+
+#: src/killall.c:514
+#, fuzzy, c-format
+msgid "Usage: killall [OPTION]... [--] NAME...\n"
+msgstr "erabilera: killall [ AUKERAK ] [ -- ] izena ...\n"
+
+#: src/killall.c:517
+#, fuzzy, c-format
+msgid ""
+"       killall -l, --list\n"
+"       killall -V, --version\n"
+"\n"
+"  -e,--exact          require exact match for very long names\n"
+"  -I,--ignore-case    case insensitive process name match\n"
+"  -g,--process-group  kill process group instead of process\n"
+"  -i,--interactive    ask for confirmation before killing\n"
+"  -l,--list           list all known signal names\n"
+"  -q,--quiet          don't print complaints\n"
+"  -r,--regexp         interpret NAME as an extended regular expression\n"
+"  -s,--signal SIGNAL  send this signal instead of SIGTERM\n"
+"  -u,--user USER      kill only process(es) running as USER\n"
+"  -v,--verbose        report if the signal was successfully sent\n"
+"  -V,--version        display version information\n"
+"  -w,--wait           wait for processes to die\n"
+msgstr ""
+"       killall -l, --list\n"
+"       killall -V --version\n"
+"\n"
+"  -e,--exact          izen oso luzeak berdin idaztera behartu\n"
+"  -I,--ignore-case    ez ezberdindu letra maiskula/minuskulak\n"
+"  -g,--process-group  hil prozesu taldea prozesuaren ordez\n"
+"  -i,--interactive    konfirmazioa eskatu hil aurretik\n"
+"  -l,--list           zerrendatu seinale ezagun guztien izenak\n"
+"  -q,--quiet          ez erakutsi kexuak\n"
+"  -s,--signal         bidali seinalea SIGTERM-ren ordez\n"
+"  -v,--verbose        informatu seinalea arrakasterekin bidali bada\n"
+"  -V,--version        bertsioaren informazioa bistaratu\n"
+"  -w,--wait           itxaron prozesuak hil arte\n"
+"\n"
+
+#: src/killall.c:533
+#, fuzzy, c-format
+msgid ""
+"  -Z,--context REGEXP kill only process(es) having context\n"
+"                      (must precede other arguments)\n"
+msgstr ""
+"  -d,--sid            hil sid hori duen/duten prozesuak\n"
+"  -c,--context        hil scontext duten prozesuak bakarrik\n"
+"   (-s, -c elkarren artean esklusiboak dira eta beste argumentuen aurretik "
+"joan behar dute)\n"
+"\n"
+
+#: src/killall.c:554 src/fuser.c:122 src/pstree.c:780
+#, fuzzy, c-format
+msgid ""
+"Copyright (C) 1993-2005 Werner Almesberger and Craig Small\n"
+"\n"
+msgstr ""
+"Copyright (C) 1993-2002 Werner Almesberger eta Craig Small\n"
+"\n"
+
+#: src/killall.c:556 src/fuser.c:124 src/peekfd.c:87 src/pstree.c:782
+#, c-format
+msgid ""
+"PSmisc comes with ABSOLUTELY NO WARRANTY.\n"
+"This is free software, and you are welcome to redistribute it under\n"
+"the terms of the GNU General Public License.\n"
+"For more information about these matters, see the files named COPYING.\n"
+msgstr ""
+"PSmisc-k ez du INONGO BERMERIK.\n"
+"Software librea da, eta berriro bana daiteke GNU Lizentzia Publiko "
+"Orokorrak\n"
+"ezarritako baldintzak betez.\n"
+"Gai honi buruzko informazio gehiagorako, ikusi COPYING izena duten "
+"fitxategiak.\n"
+
+#: src/killall.c:656
+#, c-format
+msgid "Cannot find user %s\n"
+msgstr ""
+
+#: src/killall.c:715
+#, c-format
+msgid "Maximum number of names is %d\n"
+msgstr "Izen kopuru gehiengoa %d da\n"
+
+#: src/killall.c:720 src/pstree.c:710
+#, c-format
+msgid "%s is empty (not mounted ?)\n"
+msgstr "%s hutsik dago (muntatu gabea?)\n"
+
+#: src/fuser.c:89
+#, fuzzy, c-format
+msgid ""
+"Usage: fuser [ -a | -s | -c ] [ -n SPACE ] [ -SIGNAL ] [ -kimuv ] NAME...\n"
+"             [ - ] [ -n SPACE ] [ -SIGNAL ] [ -kimuv ] NAME...\n"
+"       fuser -l\n"
+"       fuser -V\n"
+"Show which processes use the named files, sockets, or filesystems.\n"
+"\n"
+"    -a        display unused files too\n"
+"    -c        mounted FS\n"
+"    -f        silently ignored (for POSIX compatibility)\n"
+"    -i        ask before killing (ignored without -k)\n"
+"    -k        kill processes accessing the named file\n"
+"    -l        list available signal names\n"
+"    -m        show all processes using the named filesystems\n"
+"    -n SPACE  search in this name space (file, udp, or tcp)\n"
+"    -s        silent operation\n"
+"    -SIGNAL   send this signal instead of SIGKILL\n"
+"    -u        display user IDs\n"
+"    -v        verbose output\n"
+"    -V        display version information\n"
+msgstr ""
+"usage: fuser [ -a | -s | -c ] [ -n hutsuneak ] [ -seinalea ] [ -kimuv ] "
+"izena ...\n"
+"             [ - ] [ -n hutsuneak ] [ -seinalea ] [ -kimuv ] izena ...\n"
+"       fuser -l\n"
+"       fuser -V\n"
+"\n"
+"    -a        erakutsi erabiligabeko fitxategiak ere\n"
+"    -c        muntatutako fitxategi sistemak\n"
+"    -f        silently ignored (for POSIX compatibility\n"
+"    -k        hil fitxategi hori erabiltzen hari diren prozesuak\n"
+"    -i        galdetu hil baina lehenago (ignoratua -k gabe)\n"
+"    -l        zerrendatu seinale izenak\n"
+"    -m        muntatutako fitxategi sistemak\n"
+"    -n hutsuneak  bilatu hutsunean espezifikatutako izena (fitxategia, udp, "
+"edo tcp)\n"
+"    -s        operazio ixila\n"
+"    -signal   bidali seinalea SIGKILL beharrean\n"
+"    -u        erakutsi erabiltzaileen id-ak\n"
+"    -v        irteera xehetua\n"
+"    -V        erakutsi bertsio informazioa\n"
+"    -4        erakutsi IPv4 socket-ak bakarrik\n"
+"    -6        erakutsi IPv6 socket-ak bakarrik\n"
+"    -         garbitu aukerak\n"
+"\n"
+"  udp/tcp izenak: [ataka_lokala][,[urruneko_ostalaria][,[urruneko_ataka]]]\n"
+"\n"
+
+#: src/fuser.c:109
+#, c-format
+msgid ""
+"    -4        search IPv4 sockets only\n"
+"    -6        search IPv6 sockets only\n"
+msgstr ""
+
+#: src/fuser.c:113
+#, c-format
+msgid ""
+"    -         reset options\n"
+"\n"
+"  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]\n"
+"\n"
+msgstr ""
+
+#: src/fuser.c:120
+#, fuzzy, c-format
+msgid "fuser (PSmisc) %s\n"
+msgstr "fuser (psmisc) %s\n"
+
+#: src/fuser.c:147
+#, c-format
+msgid "Cannot open /proc directory: %s\n"
+msgstr ""
+
+#: src/fuser.c:283
+#, c-format
+msgid "Cannot allocate memory for matched proc: %s\n"
+msgstr ""
+
+#: src/fuser.c:316
+#, c-format
+msgid "Cannot stat mount point %s: %s\n"
+msgstr ""
+
+#: src/fuser.c:333 src/fuser.c:352 src/fuser.c:375
+#, c-format
+msgid "Cannot stat %s: %s\n"
+msgstr ""
+
+#: src/fuser.c:476
+#, c-format
+msgid "Cannot resolve local port %s: %s\n"
+msgstr ""
+
+#: src/fuser.c:492
+#, c-format
+msgid "Unknown local port AF %d\n"
+msgstr ""
+
+#: src/fuser.c:553
+#, c-format
+msgid "Cannot open protocol file \"%s\": %s\n"
+msgstr ""
+
+#: src/fuser.c:746
+msgid "Namespace option requires an argument."
+msgstr ""
+
+#: src/fuser.c:755
+msgid "Invalid namespace name"
+msgstr ""
+
+#: src/fuser.c:811
+msgid "You can only use files with mountpoint option"
+msgstr ""
+
+#: src/fuser.c:840
+msgid "No process specification given"
+msgstr ""
+
+#: src/fuser.c:845
+msgid "You cannot use the mounted and mountpoint flags together"
+msgstr ""
+
+#: src/fuser.c:852
+msgid "all option cannot be used with silent option."
+msgstr ""
+
+#: src/fuser.c:856
+msgid "You cannot search for only IPv4 and only IPv6 sockets at the same time"
+msgstr ""
+
+#: src/fuser.c:901
+#, fuzzy, c-format
+msgid "%*s USER        PID ACCESS COMMAND\n"
+msgstr ""
+"\n"
+"%*s ERABILTZAILEA      PID SARRERA KOMANDOA\n"
+
+#: src/fuser.c:926 src/fuser.c:951
+msgid "(unknown)"
+msgstr ""
+
+#: src/fuser.c:1019
+#, c-format
+msgid "Cannot stat file %s: %s\n"
+msgstr ""
+
+#: src/fuser.c:1113
+#, c-format
+msgid "Cannot open /proc/net/unix: %s\n"
+msgstr ""
+
+#: src/fuser.c:1149
+#, c-format
+msgid "Cannot open /etc/mtab: %s\n"
+msgstr ""
+
+#: src/fuser.c:1198
+#, c-format
+msgid "Kill process %d ? (y/N) "
+msgstr "%d prozesua hil? (y/N) "
+
+#: src/fuser.c:1222
+#, c-format
+msgid "Could not kill process %d: %s\n"
+msgstr ""
+
+#: src/fuser.c:1237
+#, c-format
+msgid "Cannot open a network socket.\n"
+msgstr ""
+
+#: src/fuser.c:1241
+#, fuzzy, c-format
+msgid "Cannot find socket's device number.\n"
+msgstr "ezin da socket gailu zenbakia aurkitu"
+
+#: src/peekfd.c:75
+#, c-format
+msgid "Error attaching to pid %i\n"
+msgstr ""
+
+#: src/peekfd.c:83
+#, fuzzy, c-format
+msgid "peekfd (PSmisc) %s\n"
+msgstr "pstree (psmisc) %s\n"
+
+#: src/peekfd.c:85
+#, c-format
+msgid ""
+"Copyright (C) 2007 Trent Waddington\n"
+"\n"
+msgstr ""
+
+#: src/peekfd.c:95
+#, c-format
+msgid ""
+"Usage: peekfd [-8] [-n] [-c] [-d] [-V] [-h] <pid> [<fd> ..]\n"
+"    -8 output 8 bit clean streams.\n"
+"    -n don't display read/write from fd headers.\n"
+"    -c peek at any new child processes too.\n"
+"    -d remove duplicate read/writes from the output.\n"
+"    -V prints version info.\n"
+"    -h prints this help.\n"
+"\n"
+"  Press CTRL-C to end output.\n"
+msgstr ""
+
+#: src/pstree.c:374
+#, fuzzy, c-format
+msgid "Internal error: MAX_DEPTH not big enough.\n"
+msgstr "MAX_DEPTH ez da behar bezain handia\n"
+
+#: src/pstree.c:750
+#, fuzzy, c-format
+msgid ""
+"Usage: pstree [ -a ] [ -c ] [ -h | -H PID ] [ -l ] [ -n ] [ -p ] [ -u ]\n"
+"              [ -A | -G | -U ] [ PID | USER ]\n"
+"       pstree -V\n"
+"Display a tree of processes.\n"
+"\n"
+"    -a     show command line arguments\n"
+"    -A     use ASCII line drawing characters\n"
+"    -c     don't compact identical subtrees\n"
+"    -h     highlight current process and its ancestors\n"
+"    -H PID highlight this process and its ancestors\n"
+"    -G     use VT100 line drawing characters\n"
+"    -l     don't truncate long lines\n"
+"    -n     sort output by PID\n"
+"    -p     show PIDs; implies -c\n"
+"    -u     show uid transitions\n"
+"    -U     use UTF-8 (Unicode) line drawing characters\n"
+"    -V     display version information\n"
+msgstr ""
+"erabilera: pstree [ -a ] [ -c ] [ -h | -H pid ] [ -l ] [ -n ] [ -p ] [ -u ]\n"
+"              [ -A | -G | -U ] [ pid | erabiltzailea]\n"
+"       pstree -V\n"
+"\n"
+"    -a     erakutsi komando lerroaren argumentoak\n"
+"    -A     erabili ASCII karaktereak\n"
+"    -c     ez trinkotu azpi-zuhaitz berdinak\n"
+"    -h     nabarmentu uneko prozesuak eta honen aurrekoak\n"
+"    -H pid nabarmendu \"pid\" prozesua eta honen aurrekoak\n"
+"    -G     erabili VT100 karaktereak\n"
+"    -l     ez moztu lerro luzeak\n"
+"    -n     sailkatu irteera PIDaren arabera PID\n"
+"    -p     erakutsi PIDak; -c erabiltzea esan nahi du\n"
+"    -u     erakutsi uid transizioak\n"
+
+#: src/pstree.c:768
+#, fuzzy, c-format
+msgid "    -Z     show SELinux security contexts\n"
+msgstr ""
+"    -s     erakutsi SID flaskoaok\n"
+"    -x     erakutsi seguritate testuinguru flaskoak\n"
+
+#: src/pstree.c:771
+#, fuzzy, c-format
+msgid ""
+"    PID    start at this PID; default is 1 (init)\n"
+"    USER   show only trees rooted at processes of this user\n"
+"\n"
+msgstr ""
+"    -U     erabili UTF-8 (Unicode) lerro karaktereak marrazteko\n"
+"    -V     bertsioaren informazioa bistaratu\n"
+"    pid    zein pid-etan hasi, lehenetsia 1 (init)\n"
+"    user   erakutsi erabiltzaile honen zuahitz prozesuen adarrak\n"
+"\n"
+
+#: src/pstree.c:778
+#, fuzzy, c-format
+msgid "pstree (PSmisc) %s\n"
+msgstr "pstree (psmisc) %s\n"
+
+#: src/pstree.c:871
+#, c-format
+msgid "TERM is not set\n"
+msgstr "TERM ez dago ezarrita\n"
+
+#: src/pstree.c:876
+#, c-format
+msgid "Can't get terminal capabilities\n"
+msgstr "Ezin dira terminalaren gaitasunak lortu\n"
+
+#: src/pstree.c:920
+#, c-format
+msgid "No such user name: %s\n"
+msgstr "Ez dago honelako erabiltzaile izenik: %s\n"
+
+#: src/pstree.c:936
+#, c-format
+msgid "No processes found.\n"
+msgstr "Ez da prozesurik aurkitu.\n"
+
+#: src/pstree.c:941
+#, c-format
+msgid "Press return to close\n"
+msgstr "Sakatu 'return' itxitzeko\n"
+
+#: src/signals.c:84
+#, c-format
+msgid "%s: unknown signal; %s -l lists signals.\n"
+msgstr "%s: seinale ezezaguna; %s -l seinaleak zerrendatu.\n"
+
+#~ msgid "%s: SID (%s) must be numeric\n"
+#~ msgstr "%s: SIDak (%s) zenbakia izan behar du\n"
+
+#~ msgid "-4 flag used but proc file %s is not readable\n"
+#~ msgstr ""
+#~ "-4 bandera erabili da, baina %s proc fitxategia ez da irakurgarria\n"
+
+#~ msgid "-6 flag used but proc file %s is not readable\n"
+#~ msgstr ""
+#~ "-6 bandera erabili da, baina %s proc fitxategia ez da irakurgarria\n"
+
+#~ msgid "kill %d"
+#~ msgstr "%d hil"
+
+#~ msgid "No automatic removal. Please use  umount %s\n"
+#~ msgstr "Ezin da automatikoki kendu. Mesedez erabili umount %s\n"
+
+#~ msgid "No automatic removal. Please use  swapoff %s\n"
+#~ msgstr "Ezin da automatikoki kendu. Mesedez erabili  swapoff %s\n"
+
+#~ msgid "Internal error (type %d)\n"
+#~ msgstr "barne-errorea (%d moeta)\n"
+
+#~ msgid "kernel mount  "
+#~ msgstr "kernel mount  "
+
+#~ msgid "kernel loop   "
+#~ msgstr "kernel loop   "
+
+#~ msgid "kernel swap   "
+#~ msgstr "kernel swap   "
+
+#~ msgid "ignoring -m in name space \"%s\"\n"
+#~ msgstr "-m ignoratzen \"%s\" izen tartean\n"
+
+#~ msgid "%s/%s: invalid specification\n"
+#~ msgstr "%s/%s: baliogabeko espezifikazioa\n"
+
+#~ msgid ""
+#~ "usage: pstree [ -a ] [ -c ] [ -h | -H pid ] [ -l ] [ -n ] [ -p ] [ -u ]\n"
+#~ msgstr ""
+#~ "erabilera: pstree [ -a ] [ -c ] [ -h | -H pid ] [ -l ] [ -n ] [ -p ] [ -"
+#~ "u ]\n"
+
+#~ msgid "              [ -A | -G | -U ] [ pid | user]\n"
+#~ msgstr "              [ -A | -G | -U ] [ pid | erabiltzailea]\n"
+
+#~ msgid ""
+#~ "       pstree -V\n"
+#~ "\n"
+#~ msgstr ""
+#~ "       pstree -V\n"
+#~ "\n"
+
+#~ msgid "    -a     show command line arguments\n"
+#~ msgstr "    -a     erakutsi komando lerro argumentoak\n"
+
+#~ msgid "    -A     use ASCII line drawing characters\n"
+#~ msgstr "    -A     erabili ASCII karaktereak lerroak marrazteko\n"
+
+#~ msgid "    -c     don't compact identical subtrees\n"
+#~ msgstr "    -c     ez trinkotu azpi-zuahitz berdinak\n"
+
+#~ msgid "    -h     highlight current process and its ancestors\n"
+#~ msgstr "    -h     nabarmendu uneko prozesuak eta honen aurrekoak\n"
+
+#~ msgid "    -H pid highlight process \"pid\" and its ancestors\n"
+#~ msgstr "    -H pid nabarmendu \"pid\" prozesua eta honen aurrekoak\n"
+
+#~ msgid "    -G     use VT100 line drawing characters\n"
+#~ msgstr "    -G     erabili VT100 karaktereak lerroak marrazteko\n"
+
+#~ msgid "    -l     don't truncate long lines\n"
+#~ msgstr "    -l     ez moztu lerro luzeak\n"
+
+#~ msgid "    -n     sort output by PID\n"
+#~ msgstr "    -n     sailkatu irteera PIDaren arabera\n"
+
+#~ msgid "    -p     show PIDs; implies -c\n"
+#~ msgstr "    -p     erakutsi PIDak; -c erabiltzea suposatzen du\n"
+
+#~ msgid "    -u     show uid transitions\n"
+#~ msgstr "    -u     erakutsi uid trantsizioak\n"
+
+#~ msgid "    -s     show Flask SIDs\n"
+#~ msgstr "    -s     erakutsi  SIDs flaskoak\n"
+
+#~ msgid "    -U     use UTF-8 (Unicode)) line drawing characters\n"
+#~ msgstr "    -U     erabili UTF-8 (Unicode)) lerro karaktereak marrazteko\n"
+
+#~ msgid "    -V     display version information\n"
+#~ msgstr "    -V     bertsioari buruzko informazioa pantailaratu\n"
+
+#~ msgid "    pid    start at pid, default 1 (init))\n"
+#~ msgstr "    pid    hasi pid hontan, lehenetsitakoa 1 (init))\n"
+
+#~ msgid ""
+#~ "    user   show only trees rooted at processes of that user\n"
+#~ "\n"
+#~ msgstr ""
+#~ "    user   erakutsi erabiltzaile honen prozesuen zuahitzak\n"
+#~ "\n"
+
+#~ msgid "pstree comes with ABSOLUTELY NO WARRANTY.\n"
+#~ msgstr "pstree-k ez du INONGO BERMERIK.\n"
+
+#~ msgid ""
+#~ "This is free software, and you are welcome to redistribute it under the "
+#~ "terms\n"
+#~ msgstr ""
+#~ "Software librea da, eta berriro bana daiteke GNU Lizentzia Publiko "
+#~ "Orokorrak\n"
+#~ "ezarritako baldintzak betez.\n"
+
+#~ msgid "of the GNU General Public License.\n"
+#~ msgstr "GNU General Public License lizentziapean.\n"
+
+#~ msgid ""
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Gai honi buruzko informazio gehiagorako, ikusi COPYING izena duten "
+#~ "fitxategiak.\n"
