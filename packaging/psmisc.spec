@@ -6,6 +6,7 @@ Summary:        Utilities for managing processes on your system
 Url:            http://psmisc.sourceforge.net
 Group:          Applications/System
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source1001: packaging/psmisc.manifest 
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -23,6 +24,7 @@ of processes that are using specified files or filesystems.
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 %configure --prefix=/usr
 make %{?_smp_mflags}
 
@@ -39,6 +41,7 @@ install -m 644 icons/pstree32.xpm %{buildroot}/usr/share/pixmaps/
 %remove_docs
 
 %files 
+%manifest psmisc.manifest
 /bin/fuser
 %{_bindir}/killall
 %{_bindir}/oldfuser
