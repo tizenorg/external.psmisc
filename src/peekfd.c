@@ -27,6 +27,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/syscall.h>
+#include <asm/ptrace.h>
 #include <byteswap.h>
 #include <endian.h>
 #include <sys/user.h>
@@ -57,6 +58,24 @@
 #ifndef PT_ORIG_R3
 	#define PT_ORIG_R3 34
 #endif
+#elif defined(ARM)
+#ifndef __ARM_EABI__
+#error arm oabi not supported
+#endif
+	#define REG_ORIG_ACCUM ARM_r7
+	#define REG_ACCUM ARM_r0
+	#define REG_PARAM1 ARM_ORIG_r0
+	#define REG_PARAM2 ARM_r1
+	#define REG_PARAM3 ARM_r2
+#elif defined(MIPS)
+#ifndef MIPSEL
+#error only little endian supported
+#endif
+	#define REG_ORIG_ACCUM regs[3]
+	#define REG_ACCUM regs[2]
+	#define REG_PARAM1 regs[4]
+	#define REG_PARAM2 regs[5]
+	#define REG_PARAM3 regs[6]
 #endif
 
 #define MAX_ATTACHED_PIDS 1024
@@ -70,7 +89,9 @@ void detach(void) {
 }
 
 void attach(pid_t pid) {
-	attached_pids[0] = pid;
+	if (num_attached_pids >= MAX_ATTACHED_PIDS)
+		return;
+	attached_pids[num_attached_pids] = pid;
 	if (ptrace(PTRACE_ATTACH, pid, 0, 0) == -1) {
 		fprintf(stderr, _("Error attaching to pid %i\n"), pid);
 		return;
@@ -103,7 +124,7 @@ void usage() {
 	  "  Press CTRL-C to end output.\n"));
 }
 
-int bufdiff(int pid, unsigned char *lastbuf, unsigned int addr, unsigned int len) {
+int bufdiff(pid_t pid, unsigned char *lastbuf, unsigned int addr, unsigned int len) {
 	int i;
 	for (i = 0; i < len; i++)
 		if (lastbuf[i] != (ptrace(PTRACE_PEEKTEXT, pid, addr + i, 0) & 0xff))
@@ -126,7 +147,7 @@ int main(int argc, char **argv)
     struct option options[] = {
       {"eight-bit-clean", 0, NULL, '8'},
       {"no-headers", 0, NULL, 'n'},
-      {"follow", 0, NULL, 'f'},
+      {"follow", 0, NULL, 'c'},
       {"duplicates-removed", 0, NULL, 'd'},
       {"help", 0, NULL, 'h'},
       {"version", 0, NULL, 'V'},
@@ -178,7 +199,7 @@ int main(int argc, char **argv)
       numfds = argc - optind;
       fds = malloc(sizeof(int) * numfds);
 	  for (i = 0; i < numfds; i++)
-		fds[i] = atoi(argv[optind + 1 + i]);
+		fds[i] = atoi(argv[optind + i]);
     }
 
 	attach(target_pid);
@@ -197,15 +218,26 @@ int main(int argc, char **argv)
 
 	for(;;) {
 		int status;
-		int pid = wait(&status);
+		pid_t pid = wait(&status);
 		if (WIFSTOPPED(status)) {
 #ifdef PPC
 			struct pt_regs regs;
-			regs.gpr[0] = ptrace(PTRACE_PEEKUSER, pid, 4 * PT_R0, 0);
-			regs.gpr[3] = ptrace(PTRACE_PEEKUSER, pid, 4 * PT_R3, 0);
-			regs.gpr[4] = ptrace(PTRACE_PEEKUSER, pid, 4 * PT_R4, 0);
-			regs.gpr[5] = ptrace(PTRACE_PEEKUSER, pid, 4 * PT_R5, 0);
-			regs.orig_gpr3 = ptrace(PTRACE_PEEKUSER, pid, 4 * PT_ORIG_R3, 0);
+			regs.gpr[0] = ptrace(PTRACE_PEEKUSER, pid, __WORDSIZE/8 * PT_R0, 0);
+			regs.gpr[3] = ptrace(PTRACE_PEEKUSER, pid, __WORDSIZE/8 * PT_R3, 0);
+			regs.gpr[4] = ptrace(PTRACE_PEEKUSER, pid, __WORDSIZE/8 * PT_R4, 0);
+			regs.gpr[5] = ptrace(PTRACE_PEEKUSER, pid, __WORDSIZE/8 * PT_R5, 0);
+			regs.orig_gpr3 = ptrace(PTRACE_PEEKUSER, pid, __WORDSIZE/8 * PT_ORIG_R3, 0);
+#elif defined(ARM)
+			struct pt_regs regs;
+			ptrace(PTRACE_GETREGS, pid, 0, &regs);
+#elif defined(MIPS)
+			struct pt_regs regs;
+			long pc = ptrace(PTRACE_PEEKUSER, pid, 64, 0);
+			regs.regs[2] = ptrace(PTRACE_PEEKUSER,pid,2,0);
+			regs.regs[3] = ptrace(PTRACE_PEEKTEXT, pid, pc - 8, 0) & 0xffff;
+			regs.regs[4] = ptrace(PTRACE_PEEKUSER,pid,4,0);
+			regs.regs[5] = ptrace(PTRACE_PEEKUSER,pid,5,0);
+			regs.regs[6] = ptrace(PTRACE_PEEKUSER,pid,6,0);
 #else
 			struct user_regs_struct regs;
 			ptrace(PTRACE_GETREGS, pid, 0, &regs);
@@ -239,7 +271,11 @@ int main(int argc, char **argv)
 
 						for (i = 0; i < regs.REG_PARAM3; i++) {
 #ifdef _BIG_ENDIAN
+#if __WORDSIZE == 64
+							unsigned int a = bswap_64(ptrace(PTRACE_PEEKTEXT, pid, regs.REG_PARAM2 + i, 0));
+#else
 							unsigned int a = bswap_32(ptrace(PTRACE_PEEKTEXT, pid, regs.REG_PARAM2 + i, 0));
+#endif
 #else
 							unsigned int a = ptrace(PTRACE_PEEKTEXT, pid, regs.REG_PARAM2 + i, 0);
 #endif
