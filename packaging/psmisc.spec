@@ -51,6 +51,10 @@ do
         done;
 done
 
+# license
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/%{name}
+
 %files
 %manifest %{name}.manifest
 %{_datadir}/license/%{name}
@@ -68,5 +72,6 @@ done
 %endif
 %{_mandir}/man1/peekfd.1*
 %doc AUTHORS ChangeLog COPYING README
+/usr/share/license/%{name}
 
 %changelog
