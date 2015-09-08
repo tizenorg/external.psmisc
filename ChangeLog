@@ -1,5 +1,187 @@
-Changes in ??
-=============
+Changes in 22.20
+================
+	* pstree sorts properly on names Debian #682014
+	* fuser -m regresion fixed SF #3559232, thanks to hanpt
+	* pstree finds orphaned processes SF#3537508
+	* fuser finds unix sockets again SF #3502649
+	* pstree finds pid 0 stops looping Debian #687829
+
+Changes in 22.19
+================
+	* killall with no args exits again SF #3536526
+
+Changes in 22.18
+================
+	* Added AC_CANONICAL_TARGET for target_os Debian #673485
+	* sed doesn't have [0-9]+ replace with [0-9][0-9]*
+	* assert in killall triggered for small lifetimes Debian #628617
+	* killall MAX_NAMES off by one Debian #677428
+	* Removed remaining parts of pidof
+
+Changes in 22.17
+================
+	* Make it possible to use --enable-timeout-stat as well as
+	  --enable-timeout-stat=static for a static background process which
+	  does the final stat system calls
+	* Do not mix HAVE_TIMEOUT_STAT with WITH_TIMEOUT_STAT
+	* Add timeout.c/timeout.h for static background process which is able
+	  to read the file name from pipe, does the stat(2) system call, and
+	  writes the result back to a pipe.
+	* Really add ASCII null at command string in add_proc() of pstree.c
+	* fuser uses correct timeout_stat define Debian #661723
+	* fuser is not compiled on hurd-i386 Debian #673485
+	* No TEXTRELS in src/lists built as PIE on x86
+	* Fake pstree root for kernels with hidepid turned on
+	* More fixes for Cygwin SF Patch #3511920
+	* pstree can show PGIDs SF Patch #3471056
+
+Changes in 22.16
+================
+	* Use strncpy for COMM_LEN and make it 18 characters to cover brackets
+	  in name.
+	* don't change COMM_LEN, it breaks matching long commands
+	  Debian #661145
+	* Enable some harden AM_CFLAGS by default, use configure option
+	  --disable-harden-flags to not use it.
+
+Changes in 22.15
+================
+	* Really apply patch for SF#31110178 RH#651794, SF#3317431
+	* Conditionally use fork before stat calls SF#3427522
+	* Patch from Corrina Vinschen for compiling on cygwin
+	* Use ENOENT not EBADE for FreeBSD Debian #631566
+	* Fix prstat typos
+	* Stop zombies by using waitpid Ubuntu #876387 by Peter Holik, SF#3429674
+	* Fixed minor older/younger typo in killall.1 thanks to Maikel Linke
+	* Remove doubled content in src/lists.h
+	* Add another 2 for thread brackets in pstree.c
+	* Correct defines for timeout in configure.ac
+
+Changes in 22.14
+================
+	* Fix file descriptor as well as memory leaks in fuser
+	* Strip @ symbol from file names read from /proc/net/unix
+	* Above 2 changes close openSuSE bugs #536209, #529520, and #417841
+	  and provided by Werner Fink
+	* Applied patch from Werner Fink to avoid stat(2) on NFS mounts
+	* Zeros process group memory - Patch by jgorig SF#3152925 RH#666213
+	* fuser -m -s flags work - Patch by jgorig SF#31110178 RH#651794
+	* fuser silent if /proc/swaps not available SF#3072134
+	* ppc 64 support for peekfd by jgorig SF#3166444
+	* jiffies now ULL in killall SF#3138538
+	* pstree can show parents of a process. Patch supplied by Curtis
+	  Hawthorne SF#3135157
+	* killall creates right size buffer instead of MAX_PATH Debian #623425
+	* check for /proc/$$/stat not /proc/self/stat which is not available
+	  on hurd platforms. Same Debian bug as above
+	* fuser understands IPv6 addresses, removed comment in fuser.1 that it
+	  doesn't Debian #609904
+	* fuser -k only returns 0 if you kill something.
+	* fuser doesn't complain if /proc/#/fd disappears SF#3310990
+
+Changes in 22.13
+================
+	* configure patch for x86_64 properly applied SF#3029302 by snowman123
+	* patch configure so pt_regs isn't used on SuperH. Fix by
+	  Nobuhiro Iwamatsu in Debian #588986
+	* Fixed configure.ac so only mipsel not mips compiles peekfd
+
+Changes in 22.12
+================
+	* In fuser, switched the ipv6 and ipv4 checks around Debian #581604
+	* peekfd configure patch for x86_64 SF#2986027
+	* peekfd works with ARM and MIPS thanks to patch by Arnaud Patard
+	* peekfd off-by-one patch applied SF#1948351
+	* pstree -a doesn't segfault on grsec kernels Debian #588152
+
+Changes in 22.11
+================
+	* Another attempted at killall -SIGNAME Debian #573924
+
+Changes in 22.10
+================
+	* fuser -k -m ... won't kill itself Debian #562767
+	* fuser -NAME fixed SF #2924691, Debian #563388, Gentoo #297423
+	* Added locale.h include for killall on non NLS SF #2922163
+	* Reversed normal file fuser -k check Debian #563387
+
+Changes in 22.9
+===============
+	* short option l returned in fuser Debian #539087
+	* long options terminated with 0s Debian #551833
+	* fuser only kills normal processes, patch thanks to Erik Li SF# 2892724
+	* New fuser -M if you REALLY want mount points, patch thanks to
+	  Jeremie LE HEN SF#2899709
+	* Fixed killall options for VTALRM and ILL Debian #559011
+	* pstree -a does not compact threads Debian #525632
+	* new program prtstat which prints contents of /proc/<pid>/stat 
+	  Debian #281706
+	* killall restricts by date. Thanks to George Danchev Debian #544657
+	* long options terminated in pstree too to stop segfault
+	* Re-worked fuser getopt again so -KILL options work Gentoo #297423
+	* Fix off-by-one overflow in pstree SF# 2832375
+
+Changes in 22.8
+===============
+	* Added Czech PO file
+	* rc1 update of Italian, Polish, Indonesian, Swedish and Russian PO files
+	* Updated Finnish, Italian and Vietnamese PO files
+	* Applied patch from Kari Hautio for lazy umount'ed filesystems SF#2545632
+	* Applied patch from Anonymous SF submitter to fix killall -l
+	  Fixes SF#2002570
+	* fuser will print mounts,nfs exports and swaps with -v Debian #356655
+	  and SF#533958
+	* pstree and fuser have long options Debian #517412
+	* Fixed pstree -a off-by-one error in buffer, Debian #536243
+	* Changed configure.ac to not use CXX SF# 2789801
+
+Changes in 22.7
+===============
+2009-05-04 Craig Small
+	* Updated Polish, Russian, Swedish and Indonesian PO files
+
+2009-04-26 Craig Small
+	* Changed fuser.1 so signal is SIGNAL to reduce confusion about wether
+	  or not it is a parameter Debian #517413
+	* fuser.1 references pkill(1) Debian #517414
+
+2009-03-27 Craig Small
+	* Added Chinese (traditional) PO file
+
+2009-01-14 Craig Small
+	* Updated Russian PO file
+	* Clarified -m and -c for fuser Debian #467289
+
+2008-12-16 Craig Small
+	* Patch from Arnaud Giersch to fix udp ports in fuser Debian #502208
+	* pstree man page mentions -Z may not be available Debian #478327
+	* pstree handles UTF-8 lengths much better Debian #413503
+	* killall says no process found when process not found Debian #500097
+	* pstree makes a bigger buffer for -al flags Debian #352603
+
+2008-12-05 Craig Small
+	* Dynamically reallocate buffer for fuser patch from Don Armstrong
+
+2008-11-11 Craig Small
+	* Updated Indonesian PO file
+
+2008-08-09 Craig Small
+	* peekfd off by one problem in fds Debian #460530
+
+2007-11-19 Craig Small
+	* Patch from Marcus Watts for better comm handling in pstree
+	* Updated Hungarian po file
+
+2007-11-13 Craig Small
+	* Updated French and German po files
+	* Fuser -m detects more open sockets SF patch #1728412 Thnks marienz
+
+2007-11-07 Craig Small
+	* Updated Italian, Chinese simplified, Dutch, Swedish and Polish po files
+	* Removed old fuser
+
+Changes in 22.6
+===============
 2007-08-09 Craig Small
 	* killall.1 mentions you can use -SIGxxx as well as just -XXX for signal
 	  Debian #431082

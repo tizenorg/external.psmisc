@@ -6,7 +6,6 @@ This package contains five little utilities that use the proc FS:
   fuser     identifies processes using files or sockets (similar to Sun's
 	    or SGI's fuser)
   killall   kills processes by name, e.g. killall -HUP named
-  pidof	    like killall, buts lists PIDs instead of killing processes
   pstree    shows the currently running processes as a tree
   peekfd    shows the data travelling over a file descriptor
 
@@ -16,6 +15,13 @@ They should work with most recent kernels. Man pages are included.
 
 src/loop.h was stolen from util-linux package which in turn stole it from
 the Linux kernel.
+
+fuser on network fs
+-------------------
+On network filesystems, fuser can hang because its trying to stat files
+that may go away.  If you use the --with-timeout-stat option during
+the configure step then fuser will fork a process to run stat. This means
+fuser doesn't hang, but it is much slower.
 
 Translations
 ------------
