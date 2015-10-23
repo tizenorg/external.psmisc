@@ -1,11 +1,11 @@
-Name:       psmisc
-Version:    22.20
-Release:    2
-License:    GPL-2.0+
-Summary:    Utilities for managing processes on your system
-Group:      Applications/System
-URL:        http://sourceforge.net/projects/psmisc
-Source:     http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Name:    psmisc
+Version: 22.20
+Release: 2
+License: GPL-2.0+
+Summary: Utilities for managing processes on your system
+Group:   Applications/System
+URL:     http://sourceforge.net/projects/psmisc
+Source:  http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1001: %{name}.manifest
 
 BuildRequires: gettext
@@ -30,6 +30,7 @@ of processes that are using specified files or filesystems.
 
 %build
 cp %{SOURCE1001} .
+#export LDFLAGS=" -pie"
 %configure \
         --prefix=%{_prefix} \
         --disable-nls
